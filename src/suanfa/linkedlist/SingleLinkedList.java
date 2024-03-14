@@ -27,10 +27,15 @@ public class SingleLinkedList {
         singleLinked.addOrderBy(node3);
         singleLinked.addOrderBy(node1);
         singleLinked.list();
+        System.out.println("未修改的节点信息");
+        HeroNode newHeroNode = new HeroNode(2,"张三","李四");
+        singleLinked.update(newHeroNode);
+        singleLinked.list();
     }
 
 }
 class SingleLinked{
+
     // 定一个头节点
     private HeroNode head = new HeroNode(0,"","");
 
@@ -74,6 +79,34 @@ class SingleLinked{
             temp.next = heroNode;
         }
 
+    }
+    // 修改某个节点的信息 拿新的节点替换老节点
+    public void update(HeroNode newHeroNode){
+        // 判断节点是空
+        if(head.next == null){
+            System.out.println("链表为空");
+            return;
+        }
+        // 定义一个指针 也就是辅助节点
+        HeroNode temp = head.next;
+        boolean flag = false;
+        while (true){
+            if(temp == null){
+                break;
+            }
+            if(temp.no == newHeroNode.no){
+                // 找到数据
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if(flag){
+            temp.name = newHeroNode.name;
+            temp.nickName = newHeroNode.nickName;
+        }else{
+            System.out.println("没有找到对应的信息");
+        }
     }
     // 显示链表
     public void list(){
