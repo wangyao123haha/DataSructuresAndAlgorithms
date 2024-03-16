@@ -31,6 +31,8 @@ public class SingleLinkedList {
         HeroNode newHeroNode = new HeroNode(2,"张三","李四");
         singleLinked.update(newHeroNode);
         singleLinked.list();
+        singleLinked.del(4);
+        singleLinked.list();
     }
 
 }
@@ -106,6 +108,26 @@ class SingleLinked{
             temp.nickName = newHeroNode.nickName;
         }else{
             System.out.println("没有找到对应的信息");
+        }
+    }
+    public void del(int no){
+        // 定义一个辅助变量
+        HeroNode temp = head;
+        boolean flag = false;
+        while (true){
+            if(temp.next == null){
+                break;
+            }
+            if(temp.next.no == no){
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if(flag){
+            temp.next = temp.next.next;
+        }else{
+            System.out.println("未找到节点");
         }
     }
     // 显示链表
