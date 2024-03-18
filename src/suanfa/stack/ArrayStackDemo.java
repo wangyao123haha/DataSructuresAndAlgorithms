@@ -12,7 +12,7 @@ public class ArrayStackDemo {
         ArrayStack arrayStack = new ArrayStack(10);
     }
 }
-class ArrayStack{
+class  ArrayStack{
 
     private int maxSize;//栈最大深度
     private int[] stack;
